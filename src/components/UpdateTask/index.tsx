@@ -1,10 +1,11 @@
 import React, { FormEvent, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Input from '../Input/Input';
 import Button from '../Button';
 import Dropdown from '../Dropdown';
 import { STATUS_UPTDATE_OPTIONS } from './StatusUpdateOptions';
 import { Status, Task } from '@/pages/TaskList/Types/Task';
-import { ADMIN } from '@/pages/Users/types/User';
+import { useAuth } from '@/context/authContext';
 
 interface InputProps {
   onCancel?: () => void;
@@ -13,13 +14,17 @@ interface InputProps {
 }
 
 const UpdateTask = ({ onCancel, onSubmitData, task }: InputProps) => {
+  const { user } = useAuth();
+
+  const newId = uuidv4();
+
   const [formData, setFormData] = useState<Task>({
-    createdBy: task?.createdBy ?? ADMIN.username,
+    createdBy: task?.createdBy ?? user?.role ?? 'OWNER',
     description: task?.description ?? '',
     endDate: task?.endDate ?? '',
     status: 'pending',
     title: task?.title ?? '',
-    id: task?.id ?? Math.ceil(Math.random()),
+    id: task?.id ?? newId,
   });
 
   const handleSave = (event: FormEvent<HTMLFormElement>) => {
@@ -48,27 +53,27 @@ const UpdateTask = ({ onCancel, onSubmitData, task }: InputProps) => {
       <form className="mt-5" onSubmit={(event) => handleSave(event)}>
         <Input
           type="text"
-          isValid={false}
           label="Title"
           name="title"
           value={formData?.title}
           onChange={handleInputChange}
+          required
         />
         <Input
           type="text"
-          isValid={false}
           label="Description"
           name="description"
           value={formData?.description}
           onChange={handleInputChange}
+          required
         />
         <Input
           type="date"
-          isValid={false}
           label="End Date"
           name="endDate"
           value={formData?.endDate}
           onChange={handleInputChange}
+          required
         />
         <Dropdown
           label="Status"

@@ -15,7 +15,7 @@ const BUTTON_COLORS = {
 const Button = ({ buttonType, label, ...rest }: InputProps) => {
   return (
     <button
-      className={`px-3 py-2 rounded-md ${BUTTON_COLORS[buttonType]} ${rest.disabled && 'opacity-70 cursor-not-allowed'}`}
+      className={`px-3 py-2 rounded-md text-xs md:text-sm w-20 md:w-full ${BUTTON_COLORS[buttonType]} ${rest.disabled && 'opacity-70 cursor-not-allowed'}`}
       {...rest}
     >
       {label}

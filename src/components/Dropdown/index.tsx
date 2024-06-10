@@ -32,7 +32,7 @@ const Dropdown = ({ options, defaultValue, onSelect, label }: InputProps) => {
       )}
       <select
         id={elementId}
-        className="outline-none bg-gray-100 p-2 mt-1 rounded-md w-full"
+        className="outline-none bg-gray-100 p-2 mt-1 rounded-md"
         value={selectedValue}
         onChange={handleSelect}
       >

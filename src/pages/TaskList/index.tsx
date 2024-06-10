@@ -11,15 +11,18 @@ import Button from '@/components/Button';
 import SearchInput from '@/components/SearchInput';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import Dropdown from '@/components/Dropdown';
+import { useAuth } from '@/context/authContext';
 
 const TABLE_HEADERS = ['title', 'description', 'status', 'createdBy', 'endDate'] as Array<
   keyof Task
 >;
 
 const TaskList = () => {
+  const { user } = useAuth();
+
   const [tasks, setTasks] = useLocalStorage<Task[]>('tasks', []);
 
-  const [transformedTasks, setTransformedTasks] = useState<Task[]>(tasks);
+  const [transformedTasks, setTransformedTasks] = useState<Task[]>(() => tasks ?? []);
 
   const [openUpdateModal, setOpenUpdateModal] = useState<boolean>(false);
 
@@ -37,9 +40,11 @@ const TaskList = () => {
 
   useEffect(() => {
     if (!savedTask) return;
+    if (!tasks) return;
     const taskIndex = tasks.findIndex((task) => task.id === savedTask.id);
 
     setTasks((currentTasks) => {
+      if (!currentTasks) return [];
       if (taskIndex === -1) {
         return [...currentTasks, savedTask];
       } else {
@@ -54,7 +59,12 @@ const TaskList = () => {
   }, [savedTask]);
 
   useEffect(() => {
+    if (!tasks) return;
     const filteredTasks = tasks
+      .filter((task) => {
+        if (user?.role === 'ADMIN') return task;
+        else if (task.createdBy === user?.role) return task;
+      })
       .filter((task) =>
         Object.values(task).some((val: number | string) => val.toString().includes(searchTerm)),
       )
@@ -84,6 +94,7 @@ const TaskList = () => {
 
   const handleDeleteConfirm = () => {
     setTasks((tasks) => {
+      if (!tasks) return [];
       const taskIndex = tasks.findIndex((task) => task.id === taskToBeDeleted?.id);
       return tasks.filter((_, index) => index === taskIndex);
     });
@@ -105,11 +116,14 @@ const TaskList = () => {
           task={taskToBeUpdated}
         />
       </Modal>
-      <Toolbar>
-        <h1 className="text-2xl font-semibold text-gray-800">Tasks</h1>
-        <SearchInput onFilterTable={(searchTerm) => setSearchTerm(searchTerm)} />
-        <div className="flex items-center space-x-2">
-          <Button label=" Add Task" buttonType="basic" onClick={handleAddTask} />
+      <Toolbar label="Tasks">
+        <div className="w-20 md:w-full">
+          <Button label="Add Task" buttonType="basic" onClick={handleAddTask} />
+        </div>
+        <div className="w-20 md:w-full">
+          <SearchInput onFilterTable={(searchTerm) => setSearchTerm(searchTerm)} />
+        </div>
+        <div className="w-20 md:w-full">
           <Dropdown
             defaultValue="title"
             onSelect={(option) => setSortOption(option)}
