@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 
-type UseLocalStorageHook<T> = [T, (value: T | ((value: T) => T)) => void];
+type UseLocalStorageHook<T> = [
+  T | null,
+  (value: T | null | ((value: T | null) => T | null)) => void,
+];
 
-const useLocalStorage = <T>(key: string, initialValue: T): UseLocalStorageHook<T> => {
-  const [value, setValue] = useState(() => {
+const useLocalStorage = <T>(key: string, initialValue: T | null): UseLocalStorageHook<T> => {
+  const [value, setValue] = useState<T | null>(() => {
     const storedValue = localStorage.getItem(key);
     if (storedValue) {
       try {
@@ -17,7 +20,11 @@ const useLocalStorage = <T>(key: string, initialValue: T): UseLocalStorageHook<T
   });
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
+    if (value === null) {
+      localStorage.removeItem(key);
+    } else {
+      localStorage.setItem(key, JSON.stringify(value));
+    }
   }, [key, value]);
 
   return [value, setValue];
