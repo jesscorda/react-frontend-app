@@ -9,7 +9,9 @@ const STATUS_COLORS = {
 
 const TaskStatus = ({ status }: { status: Status }) => {
   return (
-    <span className={`capitalize ${STATUS_COLORS[status]} p-1 rounded-lg text-sm`}>{status}</span>
+    <span className={`capitalize w-fit ${STATUS_COLORS[status]} p-1 rounded-lg text-sm`}>
+      {status}
+    </span>
   );
 };
 
