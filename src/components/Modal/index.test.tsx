@@ -2,14 +2,14 @@ import React from 'react';
 import Modal from '.';
 import { render, screen } from '@/test-utils/testUtils';
 
-describe('Modal component', () => {
+describe('Modal', () => {
   beforeAll(() => {
     HTMLDialogElement.prototype.show = jest.fn();
     HTMLDialogElement.prototype.showModal = jest.fn();
     HTMLDialogElement.prototype.close = jest.fn();
   });
 
-  test('renders modal as hidden when open is false', () => {
+  test('should render modal as hidden when open is false', () => {
     document.body.innerHTML = '<div id="modal" />';
 
     render(
@@ -20,7 +20,7 @@ describe('Modal component', () => {
     expect(screen.queryByText('Modal Content')).not.toBeInTheDocument();
   });
 
-  test('renders modal as visible when open is true', () => {
+  test('should render modal as visible when open is true', () => {
     render(
       <Modal open={true}>
         <p>Modal Content</p>

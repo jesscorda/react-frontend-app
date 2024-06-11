@@ -22,7 +22,7 @@ describe('Header', () => {
     );
   };
 
-  test('renders the header with user links when user is logged in', () => {
+  test('should render the header with user links when user is logged in', () => {
     renderHeaderComponent(ADMIN);
     expect(screen.getByRole('heading', { name: /Task Manager/i })).toBeInTheDocument();
     expect(screen.getByText('Tasks')).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('Header', () => {
     expect(screen.getByText('Logout')).toBeInTheDocument();
   });
 
-  test('renders the header without user links when no user is logged in', () => {
+  test('should render the header without user links when no user is logged in', () => {
     renderHeaderComponent(null);
     expect(screen.getByRole('heading', { name: /Task Manager/i })).toBeInTheDocument();
     expect(screen.queryByText('Tasks')).not.toBeInTheDocument();
@@ -38,7 +38,7 @@ describe('Header', () => {
     expect(screen.queryByText('Logout')).not.toBeInTheDocument();
   });
 
-  test('calls setUser with null when Logout is clicked', () => {
+  test('should call setUser with null when Logout is clicked', () => {
     renderHeaderComponent(ADMIN);
     fireEvent.click(screen.getByTestId('auth-link'));
     expect(mockSetUser).toHaveBeenCalledWith(null);

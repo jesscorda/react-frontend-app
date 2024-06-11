@@ -3,7 +3,7 @@ import UpdateTask from '.';
 import { Task } from '@/pages/TaskList/Types/Task';
 import { fireEvent, render, screen } from '@/test-utils/testUtils';
 
-describe('UpdateTask component', () => {
+describe('UpdateTask', () => {
   const task: Task = {
     id: '1',
     title: 'Task Title',
@@ -13,7 +13,7 @@ describe('UpdateTask component', () => {
     createdBy: 'OWNER',
   };
 
-  test('renders update task form with initial values', () => {
+  test('should render update task form with initial values', () => {
     render(<UpdateTask task={task} onSubmitData={jest.fn()} />);
     expect(screen.getByLabelText('Title*')).toHaveValue('Task Title');
     expect(screen.getByLabelText('Description*')).toHaveValue('Task Description');
@@ -21,7 +21,7 @@ describe('UpdateTask component', () => {
     expect(screen.getByLabelText('Status')).toHaveValue('pending');
   });
 
-  test('calls onSubmitData when form is submitted with updated task data', () => {
+  test('should call onSubmitData when form is submitted with updated task data', () => {
     const mockSubmitData = jest.fn();
     render(<UpdateTask task={task} onSubmitData={mockSubmitData} />);
     fireEvent.change(screen.getByLabelText('Title*'), { target: { value: 'New Task Title' } });
@@ -41,7 +41,7 @@ describe('UpdateTask component', () => {
     });
   });
 
-  test('calls onCancel when cancel button is clicked', () => {
+  test('should call onCancel when cancel button is clicked', () => {
     const mockCancel = jest.fn();
     render(<UpdateTask task={task} onSubmitData={jest.fn()} onCancel={mockCancel} />);
     fireEvent.click(screen.getByText('Cancel'));

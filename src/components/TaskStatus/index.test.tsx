@@ -2,7 +2,7 @@ import React from 'react';
 import TaskStatus from '.';
 import { render, screen } from '@/test-utils/testUtils';
 
-describe('TaskStatus component', () => {
+describe('TaskStatus', () => {
   test('should render pending status in yellow', () => {
     render(<TaskStatus status={'pending'} />);
     const statusElement = screen.getByText('pending');

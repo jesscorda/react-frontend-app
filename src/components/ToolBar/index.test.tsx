@@ -2,8 +2,8 @@ import React from 'react';
 import Toolbar from '.';
 import { render, screen } from '@/test-utils/testUtils';
 
-describe('Toolbar component', () => {
-  test('renders toolbar with label and children', () => {
+describe('Toolbar', () => {
+  test('should render toolbar with label and children', () => {
     render(<Toolbar label="Test Toolbar">Test Children</Toolbar>);
 
     const labelElement = screen.getByText('Test Toolbar');
@@ -13,7 +13,7 @@ describe('Toolbar component', () => {
     expect(childrenElement).toBeInTheDocument();
   });
 
-  test('renders toolbar with correct label', () => {
+  test('should render toolbar with correct label', () => {
     render(<Toolbar label="Custom Label">Test Children</Toolbar>);
 
     const labelElement = screen.getByText('Custom Label');
@@ -21,7 +21,7 @@ describe('Toolbar component', () => {
     expect(labelElement).toBeInTheDocument();
   });
 
-  test('renders toolbar with correct children', () => {
+  test('should render toolbar with correct children', () => {
     render(<Toolbar label="Test Toolbar">Custom Children</Toolbar>);
 
     const childrenElement = screen.getByText('Custom Children');

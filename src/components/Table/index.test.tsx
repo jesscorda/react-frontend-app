@@ -8,8 +8,8 @@ const rows = [
   { id: '2', name: 'Task 2', status: 'Completed' },
 ];
 
-describe('DataTable component', () => {
-  test('renders table with rows and columns', () => {
+describe('DataTable', () => {
+  test('should render table with rows and columns', () => {
     render(<DataTable columns={columns} rows={rows} onEditRow={() => {}} onDeleteRow={() => {}} />);
     expect(screen.getByText('name')).toBeInTheDocument();
     expect(screen.getByText('status')).toBeInTheDocument();
@@ -24,7 +24,7 @@ describe('DataTable component', () => {
     expect(screen.getAllByText('Delete')).toHaveLength(rows.length);
   });
 
-  test('calls onEditRow and onDeleteRow with correct row data', () => {
+  test('should call onEditRow and onDeleteRow with correct row data', () => {
     const mockOnEditRow = jest.fn();
     const mockOnDeleteRow = jest.fn();
     render(
