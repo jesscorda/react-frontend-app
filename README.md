@@ -28,13 +28,16 @@
 
 ### Assumptions or Limitations
 
-1. It is assumed that at the first boot of the application, user with ADMIN role is present, if not it is created.
-2. Only ADMIN users can create new users and grant them ADMIN or OWNER role.
-3. The owners are not shown the users page.
-4. The login api does not take into consideration the password entered, it only checks the username. Hence the username must be distinct.
-5. The add and edit screens cannot be accessed via dedicated routes.
-6. Implement error boundaries.
-7. Implement WAI-ARIA tags to improve accessibility.
+1. It is assumed that at the first boot of the application, user with ADMIN role is present, if not it is created while the app boots.
+   ```bash
+   username: admin
+   password: anything_of_your_choice
+3. Only ADMIN users can create new users and grant them ADMIN or OWNER role.
+4. The owners are not shown the users page.
+5. The login api does not take into consideration the password entered, it only checks the username. Hence the username must be distinct.
+6. The add and edit screens cannot be accessed via dedicated routes.
+7. Implement error boundaries.
+8. Implement WAI-ARIA tags to improve accessibility.
 
 ### Brief Explanation of Code Structure and Design Choices
 
