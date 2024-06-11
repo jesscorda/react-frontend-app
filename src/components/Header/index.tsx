@@ -2,12 +2,14 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/context/authContext';
 
-export default function Header() {
+const Header = () => {
   const { user, setUser } = useAuth();
 
   return (
     <header className="flex justify-between p-3 bg-blue-950 text-white items-center">
-      <h1 className="text-xl md:text-2xl font-bold">Task Manager</h1>
+      <h1 className="text-xl md:text-2xl font-bold" data-testid="header-title">
+        Task Manager
+      </h1>
       {user && (
         <nav>
           <ul className="flex gap-3 text-sm md:text-lg">
@@ -20,7 +22,7 @@ export default function Header() {
               </li>
             )}
             <li>
-              <Link onClick={() => setUser(null)} to="login">
+              <Link onClick={() => setUser(null)} to="login" data-testid="auth-link">
                 {user ? 'Logout' : 'Login'}
               </Link>
             </li>
@@ -29,4 +31,6 @@ export default function Header() {
       )}
     </header>
   );
-}
+};
+
+export default Header;

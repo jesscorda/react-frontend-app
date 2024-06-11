@@ -9,8 +9,14 @@ interface AuthContextType {
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useLocalStorage<User>('user', null);
+export const AuthProvider = ({
+  children,
+  initialUserValue,
+}: {
+  children: React.ReactNode;
+  initialUserValue: User | null;
+}) => {
+  const [user, setUser] = useLocalStorage<User>('user', initialUserValue);
 
   return <AuthContext.Provider value={{ user, setUser }}>{children}</AuthContext.Provider>;
 };

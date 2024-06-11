@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface InputProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  buttonType: keyof typeof BUTTON_COLORS;
+  buttonType?: keyof typeof BUTTON_COLORS;
   label: string;
 }
 
@@ -12,7 +12,7 @@ const BUTTON_COLORS = {
   danger: 'bg-red-700 text-black',
 };
 
-const Button = ({ buttonType, label, ...rest }: InputProps) => {
+const Button = ({ buttonType = 'basic', label, ...rest }: InputProps) => {
   return (
     <button
       className={`px-3 py-2 rounded-md text-xs md:text-sm w-20 md:w-full ${BUTTON_COLORS[buttonType]} ${rest.disabled && 'opacity-70 cursor-not-allowed'}`}

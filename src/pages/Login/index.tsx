@@ -48,7 +48,7 @@ const Login = () => {
     <div className="flex flex-col p-4 lg:w-1/3 mx-auto lg:shadow-md justify-center">
       <p className="text-xl font-semibold">Login</p>
       {validationMessage && <p className="text-xs text-red-700">{validationMessage}</p>}
-      <form className="mt-5" onSubmit={(event) => handleSave(event)}>
+      <form className="mt-5" onSubmit={(event) => handleSave(event)} data-testid="form">
         <Input
           type="text"
           label="Username"

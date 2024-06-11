@@ -50,7 +50,7 @@ const UpdateTask = ({ onCancel, onSubmitData, task }: InputProps) => {
   return (
     <div className="flex flex-col p-4">
       <p className="text-xl font-semibold">Add Task</p>
-      <form className="mt-5" onSubmit={(event) => handleSave(event)}>
+      <form className="mt-5" onSubmit={(event) => handleSave(event)} data-testid="form">
         <Input
           type="text"
           label="Title"

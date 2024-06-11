@@ -10,7 +10,7 @@ import { AuthProvider } from './context/authContext';
 const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <AuthProvider>
+    <AuthProvider initialUserValue={null}>
       <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>,
