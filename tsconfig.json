@@ -20,7 +20,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "test-utils": ["./utils/test-utils"]
     }
   },
   "include": ["src"],

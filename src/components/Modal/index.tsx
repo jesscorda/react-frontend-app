@@ -21,7 +21,12 @@ const Modal = ({ open, children, onClose }: InputProps) => {
   }, [open]);
 
   return createPortal(
-    <dialog className={`modal ${open ? 'block' : 'hidden'}`} ref={dialog} onClose={onClose}>
+    <dialog
+      data-testid="modal"
+      className={`modal ${open ? 'block' : 'hidden'}`}
+      ref={dialog}
+      onClose={onClose}
+    >
       {open ? children : null}
     </dialog>,
     document.getElementById('modal') as HTMLElement,

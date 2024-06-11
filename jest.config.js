@@ -9,6 +9,9 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@ui/(.*)$': '<rootDir>/src/components/ui/$1',
   },
+  setupFilesAfterEnv: ['@testing-library/jest-dom'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  modulePaths: ['<rootDir>'],
   globals: {
     TARGET_ENV: 'develop',
     SERVICE_URL: '',
