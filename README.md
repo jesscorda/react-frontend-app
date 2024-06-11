@@ -39,9 +39,11 @@
 
 1. The project uses React with Typescript to ensure better typing and TailwindCSS because it provides low-level utility classes to build custom designs quickly.
 2. React Testing library and Jest is used for testing.
-3. The app is segregated into components folder - where reusable components are kept and pages where route related pages are kept. This approach promotes extensibity and readability.
-4. State management is done using useState hook rather than a state management library because of the simple structure of the app.
-5. Data is persisted in the local storage for easy access and retrival.
+3. Webpack is used as a module bundler. Webpack helps optimize the performance of web applications by bundling assets efficiently and enabling features like code splitting and hot module replacement.
+4. Babel is used as a JavaScript compiler that converts modern JavaScript code (ES6/ES7 and beyond) into a backwards-compatible version of JavaScript that can be run in older browsers. It allows developers to use the latest JavaScript syntax and features without worrying about browser compatibility issues.
+5. The app is segregated into components folder - where reusable components are kept and pages where route related pages are kept. This approach promotes extensibity and readability.
+6. State management is done using useState hook rather than a state management library because of the simple structure of the app.
+7. Data is persisted in the local storage for easy access and retrival.
 
 ## Functionality
 
