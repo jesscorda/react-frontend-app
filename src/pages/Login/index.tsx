@@ -1,6 +1,6 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User } from '../Users/types/User';
+import { ADMIN, User } from '../Users/types/User';
 import { UserCredentials } from './Types/UserCredentials';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button';
@@ -15,7 +15,7 @@ const Login = () => {
 
   const [validationMessage, setValidationMessage] = useState<string>('');
 
-  const [users] = useLocalStorage<User[] | null>('users', []);
+  const [users] = useLocalStorage<User[] | null>('users', [ADMIN]);
 
   const { user, setUser } = useAuth();
 
