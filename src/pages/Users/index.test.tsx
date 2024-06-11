@@ -10,7 +10,7 @@ import { useAuth } from '@/context/authContext';
 jest.mock('@/context/authContext');
 jest.mock('@/hooks/useLocalStorage');
 
-describe('UserList component', () => {
+describe('UserList', () => {
   const mockSetUsers = jest.fn();
   const mockUsers: User[] = [
     { id: '1', username: 'user1', role: 'ADMIN' },
@@ -39,7 +39,7 @@ describe('UserList component', () => {
     );
   };
 
-  test('renders the Users component with tasks', () => {
+  test('should render the Users component with tasks', () => {
     renderUsersList();
 
     expect(screen.getByText('Users')).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe('UserList component', () => {
     expect(screen.getByText('user2')).toBeInTheDocument();
   });
 
-  test('filters tasks based on search term', () => {
+  test('should filter tasks based on search term', () => {
     renderUsersList();
 
     fireEvent.change(screen.getByPlaceholderText('Search Items'), { target: { value: 'user1' } });

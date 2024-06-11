@@ -3,15 +3,15 @@ import { fireEvent, screen } from '@testing-library/dom';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ADMIN } from '../Users/types/User';
+import { Task } from './Types/Task';
 import TaskList from '.';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { useAuth } from '@/context/authContext';
-import { Task } from './Types/Task';
 
 jest.mock('@/context/authContext');
 jest.mock('@/hooks/useLocalStorage');
 
-describe('TaskList component', () => {
+describe('TaskList', () => {
   const mockSetTasks = jest.fn();
   const mockTasks: Task[] = [
     {
@@ -54,7 +54,7 @@ describe('TaskList component', () => {
     );
   };
 
-  test('renders the TaskList component with tasks', () => {
+  test('should render the TaskList component with tasks', () => {
     renderTasksList();
 
     expect(screen.getByText('Tasks')).toBeInTheDocument();
@@ -62,7 +62,7 @@ describe('TaskList component', () => {
     expect(screen.getByText('Task 2')).toBeInTheDocument();
   });
 
-  test('filters tasks based on search term', () => {
+  test('should filter tasks based on search term', () => {
     renderTasksList();
 
     fireEvent.change(screen.getByPlaceholderText('Search Items'), { target: { value: 'Task 1' } });
@@ -70,7 +70,7 @@ describe('TaskList component', () => {
     expect(screen.queryByText('Task 2')).not.toBeInTheDocument();
   });
 
-  test('sorts tasks based on selected option', () => {
+  test('should sort tasks based on selected option', () => {
     renderTasksList();
     fireEvent.change(screen.getByDisplayValue('Sort By Ascending Title'), {
       target: { value: 'endDateAsc' },

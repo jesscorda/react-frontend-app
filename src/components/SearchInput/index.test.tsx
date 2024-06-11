@@ -8,8 +8,8 @@ jest.mock('../Input/Input', () => {
   ));
 });
 
-describe('SearchInput component', () => {
-  test('calls onFilterTable with input value when input changes', () => {
+describe('SearchInput', () => {
+  test('should call onFilterTable with input value when input changes', () => {
     const mockOnFilterTable = jest.fn();
     render(<SearchInput onFilterTable={mockOnFilterTable} />);
     const inputElement = screen.getByTestId('mocked-input');

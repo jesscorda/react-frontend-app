@@ -36,7 +36,7 @@ describe('Dropdown', () => {
     expect(selectElement.value).toBe('2');
   });
 
-  test('should rende rwithout label when label is not provided', () => {
+  test('should render without label when label is not provided', () => {
     render(<Dropdown options={OPTIONS} defaultValue="1" onSelect={handleSelect} />);
     expect(screen.queryByText('Test')).not.toBeInTheDocument();
   });

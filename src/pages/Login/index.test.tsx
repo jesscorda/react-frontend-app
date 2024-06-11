@@ -10,8 +10,8 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockedUsedNavigate,
 }));
 
-describe('Login component', () => {
-  test('renders login form', () => {
+describe('Login', () => {
+  test('should render login form', () => {
     render(
       <MemoryRouter>
         <Login />
@@ -22,7 +22,7 @@ describe('Login component', () => {
     expect(screen.getByLabelText('Password')).toBeInTheDocument();
   });
 
-  test('navigates to tasks page after successful login', async () => {
+  test('should navigate to tasks page after successful login', async () => {
     render(
       <MemoryRouter>
         <Login />
