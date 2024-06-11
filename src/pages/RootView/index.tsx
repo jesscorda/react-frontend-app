@@ -9,7 +9,8 @@ const RootView = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) navigate('/login');
+    if (user) navigate('/tasks');
+    else navigate('/login');
   }, []);
 
   return (
