@@ -34,6 +34,7 @@
 4. The login api does not take into consideration the password entered, it only checks the username. Hence the username must be distinct.
 5. The add and edit screens cannot be accessed via dedicated routes.
 6. Implement error boundaries.
+7. Implement WAI-ARIA tags to improve accessibility.
 
 ### Brief Explanation of Code Structure and Design Choices
 
