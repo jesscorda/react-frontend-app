@@ -6,12 +6,15 @@ import { router } from './core/routes/routes';
 import './styles/tailwind.css';
 import './styles/normalize.css';
 import { AuthProvider } from './context/authContext';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <AuthProvider initialUserValue={null}>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider initialUserValue={null}>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </ErrorBoundary>
   </React.StrictMode>,
 );
