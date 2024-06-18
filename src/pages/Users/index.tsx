@@ -75,7 +75,7 @@ const Users = () => {
     setUsers((users) => {
       if (!users) return [];
       const userIndex = users.findIndex((user) => user.id === userToBeDeleted?.id);
-      return users.filter((_, index) => index === userIndex);
+      return users.filter((_, index) => index !== userIndex);
     });
     setOpenDeleteConfirmationModal(false);
   };

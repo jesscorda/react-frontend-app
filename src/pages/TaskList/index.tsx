@@ -96,7 +96,7 @@ const TaskList = () => {
     setTasks((tasks) => {
       if (!tasks) return [];
       const taskIndex = tasks.findIndex((task) => task.id === taskToBeDeleted?.id);
-      return tasks.filter((_, index) => index === taskIndex);
+      return tasks.filter((_, index) => index !== taskIndex);
     });
     setOpenDeleteConfirmationModal(false);
   };

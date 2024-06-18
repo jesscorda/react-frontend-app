@@ -22,7 +22,7 @@ const UpdateTask = ({ onCancel, onSubmitData, task }: InputProps) => {
     createdBy: task?.createdBy ?? user?.role ?? 'OWNER',
     description: task?.description ?? '',
     endDate: task?.endDate ?? '',
-    status: 'pending',
+    status: task?.status ?? 'pending',
     title: task?.title ?? '',
     id: task?.id ?? newId,
   });
@@ -84,7 +84,7 @@ const UpdateTask = ({ onCancel, onSubmitData, task }: InputProps) => {
 
         <div className="mt-5 flex gap-5 justify-end">
           <Button label="Save" buttonType="basic" />
-          <Button type="button" label="Cancel" buttonType="cancel" onClick={handleCancel} />
+          <Button type="button" label="Cancel" buttonType="outline" onClick={handleCancel} />
         </div>
       </form>
     </div>
