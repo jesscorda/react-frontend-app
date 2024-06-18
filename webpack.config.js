@@ -6,6 +6,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const BASE_PATH = path.resolve(__dirname, '');
 const APP_PATH = `${BASE_PATH}/src`;
 const DIST_PATH = `${BASE_PATH}/build`;
+const PUBLIC_PATH = `${BASE_PATH}/public`;
 
 module.exports = (env) => {
   return {
@@ -45,8 +46,8 @@ module.exports = (env) => {
       }),
       new HtmlWebpackPlugin({
         inject: true,
-        template: path.join(APP_PATH, 'index.html'),
-        favicon: path.join(APP_PATH, 'favicon.ico'),
+        template: path.join(PUBLIC_PATH, 'index.html'),
+        favicon: path.join(PUBLIC_PATH, 'favicon.ico'),
       }),
       new webpack.DefinePlugin({
         TARGET_ENV: JSON.stringify(env.TARGET_ENV),
